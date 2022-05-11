@@ -1,12 +1,24 @@
 import { useState } from "react";
 import Loader from "./components/loader";
 import Logo from "./assets/logo.png";
+import MainInfo from "./components/MainInfo";
+import Warnings from "./components/Warnings";
+import Keywords from "./components/Keywords";
 
 function App() {
 	const [search, setSearch] = useState("");
 	const [warning, setWarning] = useState([]);
+	const [keyword, setKeyword] = useState([]);
 	const [wordCount, setWordCount] = useState();
+	const [duplicatePage, setDuplicatePage] = useState([]);
+	const [error, setError] = useState([]);
+	const [title, setTitle] = useState("");
+	const [description, setDescription] = useState("");
+	const [url, setUrl] = useState("");
 	const [toggle, setToggle] = useState(false);
+	const [metaDesc, setMetaDesc] = useState("");
+	const [charset, setCharset] = useState("");
+	const [viewport, setViewport] = useState("");
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
@@ -20,7 +32,17 @@ function App() {
 		const data = await response.json();
 
 		setWarning(data.pages[0].warnings);
+		setKeyword(data.keywords);
 		setWordCount(data.pages[0].word_count);
+		setDuplicatePage(data.duplicate_pages);
+		setError(data.errors);
+		setTitle(data.pages[0].title);
+		setDescription(data.pages[0].description);
+		setUrl(data.pages[0].url);
+		setMetaDesc(data.pages[0].additional_info.meta_desc);
+		setCharset(data.pages[0].additional_info.charset);
+		setViewport(data.pages[0].additional_info.viewport);
+
 		await setToggle(false);
 	};
 
@@ -34,7 +56,7 @@ function App() {
 					alt="logo"
 				></img>
 				<h1 className="noselect" onClick={() => window.location.reload(false)}>
-					SEO Analyze
+					Seek SEO
 				</h1>
 				<form className="search-box" onSubmit={handleSearch}>
 					<input
@@ -44,25 +66,26 @@ function App() {
 						onChange={(e) => setSearch(e.target.value)}
 					/>
 				</form>
-				{wordCount ? (
-					<p>
-						Search Results: <span>{wordCount}</span>
-					</p>
-				) : (
-					""
-				)}
+				<MainInfo
+					wordCount={wordCount}
+					duplicatePage={duplicatePage}
+					error={error}
+					title={title}
+					description={description}
+					url={url}
+					metaDesc={metaDesc}
+					charset={charset}
+					viewport={viewport}
+				/>
 			</header>
 			<div className="results">
 				{toggle ? (
 					<Loader />
 				) : (
-					warning.map((item, i) => {
-						return (
-							<div className="result" key={i}>
-								<p dangerouslySetInnerHTML={{ __html: item }}></p>
-							</div>
-						);
-					})
+					<>
+						{" "}
+						<Warnings warning={warning} /> <Keywords keyword={keyword} />{" "}
+					</>
 				)}
 			</div>
 		</div>

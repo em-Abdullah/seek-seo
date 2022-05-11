@@ -10,7 +10,7 @@
 
 body {
   background-color: #212529;
-  padding: 10px;
+  padding: 10px 150px;
 }
 
 .App {
@@ -85,10 +85,6 @@ input {
   transition: 0.4s;
 }
 
-.result:hover {
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-}
-
 .result h3 {
   color: white;
   font-size: 26px;
@@ -138,4 +134,25 @@ span {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+.warning-expandable {
+  background-color: #2A2E32;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+  
+}
+.Collapsible__trigger {
+  cursor: pointer;
+}
+h4 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 16px;
+  display: inline-flex;
+}
+.main-info {
+  text-align: center;
 }
