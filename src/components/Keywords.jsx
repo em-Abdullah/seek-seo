@@ -9,16 +9,16 @@ const Keywords = (props) => {
   return (
     <>
     {keyword.length !== 0 ? (
-    <div className="warning-expandable">
+    <div className="expandable-btn">
      <Collapsible trigger={"Keywords"} >
     {
       keyword.map((item, i) => {
 				return (
 					<div className="result" key={i}>
             <h4>Count: </h4>
-						<p dangerouslySetInnerHTML={{ __html: item.count }}></p>
+						<li dangerouslySetInnerHTML={{ __html: item.count }}></li>
             <h4>Word: </h4>
-            <p dangerouslySetInnerHTML={{ __html: item.word }}></p>
+            <li dangerouslySetInnerHTML={{ __html: item.word }}></li>
 					</div>
 					);
 				})

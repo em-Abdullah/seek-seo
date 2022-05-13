@@ -1,3 +1,10 @@
+:root {
+  --background: #212529;
+  --text: #FFF;
+  --highlight: #11998E;
+  --secondary: #2A2E32;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 
 * {
@@ -9,8 +16,73 @@
 }
 
 body {
-  background-color: #212529;
+  background: var(--background);
+  transition: 0.5s background ease;
   padding: 10px 150px;
+}
+
+.theme-switch {
+  --background: #FFF;
+  --text: #212529;
+  --secondary: #2A2E32;
+  color: var(--text);
+  width: 70px;
+  height: 30px;
+  background: var(--highlight);
+  border-radius: 50px;
+  position: relative;
+  margin-bottom: 20px;
+
+  .switch {
+    background: white;
+    width: 24px;
+    height: 24px;
+    background: var(--background);
+    border-radius: 100%;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    transition: 0.5s all ease;
+  }
+}
+
+.light-theme {
+  --background: #FFF;
+  --text: #212529;
+  --secondary: #D8D8D8;
+  background: var(--background);
+
+  .theme-switch {
+    background: var(--text);
+
+    .switch {
+      transform: translateX(37px);
+    }
+  }
+  h1 {
+    color: var(--highlight);
+  }
+  input {
+    background-color: var(--secondary);
+    color: var(--text);
+  }
+  p {
+    color: var(--text);
+  }
+  
+  span {
+    color: var(--highlight);
+  }
+  
+  .result li {
+    color: var(--text);
+  }
+  h4 {
+    color: var(--text);
+  }
+  pre {
+    color: var(--text);
+  }
 }
 
 .App {
@@ -52,7 +124,7 @@ img {
 }
 
 input {
-  background-color: #2A2E32;
+  background-color: var(--secondary);
   color: white;
 }
 
@@ -80,7 +152,7 @@ input {
   width: 100%;
   padding: 16px;
   margin-bottom: 16px;
-  background-color: #2A2E32;
+  background-color: var(--secondary);
   border-radius: 16px;
   transition: 0.4s;
 }
@@ -98,31 +170,17 @@ p {
 }
 
 span {
-  color: #11998E;
+  color: var(--highlight);
 }
 
-.result p {
+.result li {
   color: #A6A7A9;
   font-size: 18px;
   margin-bottom: 16px;
 }
 
-.result p .searchmatch {
+.result li .searchmatch {
   font-weight: 700;
-}
-
-.result a {
-  display: inline-block;
-  padding: 12px 16px;
-  background-image: linear-gradient(to right, #11998E, #6DD5ED);
-  color: white;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 12px;
-  transition: 0.4s;
-}
-.result a:hover {
-  background-image: linear-gradient(to right, #0f8178, #5cb3c7);
 }
 
 .noselect {
@@ -136,8 +194,8 @@ span {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.warning-expandable {
-  background-color: #2A2E32;
+.expandable-btn {
+  background-color: var(--secondary);
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 16px;
@@ -155,4 +213,9 @@ h4 {
 }
 .main-info {
   text-align: center;
+}
+pre {
+  color: #A6A7A9;
+  font-size: 16px;
+  margin-bottom: 16px;
 }

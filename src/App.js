@@ -4,6 +4,9 @@ import Logo from "./assets/logo.png";
 import MainInfo from "./components/MainInfo";
 import Warnings from "./components/Warnings";
 import Keywords from "./components/Keywords";
+import ThemeSwitch from "./components/ThemeSwitch";
+import Bigrams from "./components/Bigrams";
+import Trigrams from "./components/Trigrams";
 
 function App() {
 	const [search, setSearch] = useState("");
@@ -19,6 +22,8 @@ function App() {
 	const [metaDesc, setMetaDesc] = useState("");
 	const [charset, setCharset] = useState("");
 	const [viewport, setViewport] = useState("");
+	const [bigram, setBigram] = useState();
+	const [trigram, setTrigram] = useState();
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
@@ -32,6 +37,8 @@ function App() {
 		const data = await response.json();
 
 		setWarning(data.pages[0].warnings);
+		setBigram(data.pages[0].bigrams);
+		setTrigram(data.pages[0].trigrams);
 		setKeyword(data.keywords);
 		setWordCount(data.pages[0].word_count);
 		setDuplicatePage(data.duplicate_pages);
@@ -49,6 +56,7 @@ function App() {
 	return (
 		<div className="App">
 			<header>
+				<ThemeSwitch />
 				<img
 					className="noselect"
 					onClick={() => window.location.reload(false)}
@@ -85,6 +93,7 @@ function App() {
 					<>
 						{" "}
 						<Warnings warning={warning} /> <Keywords keyword={keyword} />{" "}
+						<Bigrams bigram={bigram} /> <Trigrams trigram={trigram} />{" "}
 					</>
 				)}
 			</div>
