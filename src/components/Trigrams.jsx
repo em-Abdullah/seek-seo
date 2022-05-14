@@ -8,11 +8,11 @@ const Trigrams = (props) => {
     <>
     {trigram ? (
     <div className="expandable-btn">
-     <Collapsible trigger={"Trigrams"} >
+     <Collapsible trigger={"Trigrams ▼"} >
      {Object.entries(trigram).map((item, i) => {
 				return (
 					<div className="result" key={i}>
-						<li dangerouslySetInnerHTML={{ __html: `${item[0]} : ${item[1]}` }}></li>
+						<li className="bigram-trigram" dangerouslySetInnerHTML={{ __html: `${item[0]} : ${item[1]}` }}></li>
 					</div>
 					);
 				})

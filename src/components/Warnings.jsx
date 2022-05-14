@@ -8,12 +8,12 @@ const Warnings = (props) => {
     <>
     {warning.length !== 0 ? (
     <div className="expandable-btn">
-     <Collapsible trigger={"Warnings"} >
+     <Collapsible trigger={"Warnings ▼"} >
     
       {warning.map((item, i) => {
 				return (
 					<div className="result" key={i}>
-						<li dangerouslySetInnerHTML={{ __html: item }}></li>
+						<li className="warning" dangerouslySetInnerHTML={{ __html: item }}></li>
 					</div>
 					);
 				})
