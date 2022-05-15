@@ -7,6 +7,8 @@ import Keywords from "./components/Keywords";
 import ThemeSwitch from "./components/ThemeSwitch";
 import Bigrams from "./components/Bigrams";
 import Trigrams from "./components/Trigrams";
+import Headings from "./components/Headings";
+import Collapsible from "react-collapsible";
 
 function App() {
 	const [search, setSearch] = useState("");
@@ -24,6 +26,7 @@ function App() {
 	const [viewport, setViewport] = useState("");
 	const [bigram, setBigram] = useState();
 	const [trigram, setTrigram] = useState();
+	const [heading, setHeading] = useState();
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
@@ -49,6 +52,7 @@ function App() {
 		setMetaDesc(data.pages[0].additional_info.meta_desc);
 		setCharset(data.pages[0].additional_info.charset);
 		setViewport(data.pages[0].additional_info.viewport);
+		setHeading(data.pages[0].headings);
 
 		await setToggle(false);
 	};
@@ -92,8 +96,20 @@ function App() {
 				) : (
 					<>
 						{" "}
-						<Warnings warning={warning} /> <Keywords keyword={keyword} />{" "}
-						<Bigrams bigram={bigram} /> <Trigrams trigram={trigram} />{" "}
+						<Headings heading={heading} /> <Warnings warning={warning} />{" "}
+						<Keywords keyword={keyword} />{" "}
+						<>
+							{heading ? (
+								<div className="expandable-btn">
+									<Collapsible trigger={"Additional Info ▼"}>
+										<Bigrams bigram={bigram} />
+										<Trigrams trigram={trigram} />
+									</Collapsible>
+								</div>
+							) : (
+								""
+							)}
+						</>{" "}
 					</>
 				)}
 			</div>

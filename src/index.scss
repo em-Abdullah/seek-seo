@@ -45,7 +45,6 @@ body {
     transition: 0.5s all ease;
   }
 }
-
 .light-theme {
   --background: #FFF;
   --text: #212529;
@@ -53,7 +52,7 @@ body {
   background: var(--background);
 
   .theme-switch {
-    background: var(--text);
+    background: #b9b9b9;
 
     .switch {
       transform: translateX(37px);
@@ -75,6 +74,9 @@ body {
   }
   pre {
     color: var(--text);
+  }
+  .suggestion {
+    color: #e67e22;
   }
 }
 
@@ -224,4 +226,9 @@ pre {
 }
 .bigram-trigram {
   color: #8c7ae6;
+}
+.suggestion {
+  display: inline-block;
+  gap: 0.5em;
+  color: #e67e22;
 }
