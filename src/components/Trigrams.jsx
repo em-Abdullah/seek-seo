@@ -12,7 +12,7 @@ const Trigrams = (props) => {
      {Object.entries(trigram).map((item, i) => {
 				return (
 					<div className="result" key={i}>
-						<li className="bigram-trigram" dangerouslySetInnerHTML={{ __html: `${item[0]} : ${item[1]}` }}></li>
+						<li className="bigram-trigram">{`${item[0]} : ${item[1]}`}</li>
 					</div>
 					);
 				})

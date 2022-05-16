@@ -16,9 +16,9 @@ const Keywords = (props) => {
 				return (
 					<div className="result keywords" key={i}>
             <h4>Count: </h4>
-						<li dangerouslySetInnerHTML={{ __html: item.count }}></li>
+						<li>{item.count}</li>
             <h4>Word: </h4>
-            <li dangerouslySetInnerHTML={{ __html: item.word }}></li>
+            <li>{item.word }</li>
 					</div>
 					);
 				})

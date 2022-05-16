@@ -27,6 +27,7 @@ function App() {
 	const [bigram, setBigram] = useState();
 	const [trigram, setTrigram] = useState();
 	const [heading, setHeading] = useState();
+	const [time, setTime] = useState();
 
 	const handleSearch = async (e) => {
 		e.preventDefault();
@@ -53,6 +54,7 @@ function App() {
 		setCharset(data.pages[0].additional_info.charset);
 		setViewport(data.pages[0].additional_info.viewport);
 		setHeading(data.pages[0].headings);
+		setTime(data.total_time);
 
 		await setToggle(false);
 	};
@@ -79,6 +81,7 @@ function App() {
 					/>
 				</form>
 				<MainInfo
+					time={time}
 					wordCount={wordCount}
 					duplicatePage={duplicatePage}
 					error={error}

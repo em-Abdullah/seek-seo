@@ -13,7 +13,7 @@ const Warnings = (props) => {
       {warning.map((item, i) => {
 				return (
 					<div className="result" key={i}>
-						<li className="warning" dangerouslySetInnerHTML={{ __html: item }}></li>
+						<li className="warning">{item}</li>
 					</div>
 					);
 				})

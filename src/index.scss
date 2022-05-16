@@ -61,6 +61,9 @@ body {
   h1 {
     color: var(--highlight);
   }
+  h2 {
+    color: var(--text);
+  }
   input {
     background-color: var(--secondary);
     color: var(--text);
@@ -95,9 +98,16 @@ header {
 }
 
 h1 {
-  color: white;
+  color: #A6A7A9;
   font-size: 42px;
   text-align: center;
+  margin-bottom: 16px;
+}
+h2 {
+  color: #A6A7A9;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 16px;
   margin-bottom: 16px;
 }
 
